@@ -5,27 +5,13 @@ import com.google.gson.GsonBuilder;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Client {
-
-    private static final Path FILE_PATH = Paths.get(System.getProperty("user.dir") + File.separator +
-            "app" + File.separator +
-            "src" + File.separator +
-            "main" + File.separator +
-            "java" + File.separator +
-            "Java" + File.separator +
-            "JSON" + File.separator +
-            "Database" + File.separator +
-            "client" + File.separator +
-            "data").toAbsolutePath();
-
     private static final String ADDRESS = "127.0.0.1";
     private static final int PORT = 23456;
 
@@ -38,7 +24,7 @@ public class Client {
             System.out.println("Client started!");
 
             String jsonRequest = cla.fileName != null
-                    ? new String(Files.readAllBytes(FILE_PATH.resolve(cla.fileName)))
+                    ? new String(Files.readAllBytes(Path.of(cla.fileName)))
                     : new GsonBuilder()
 //                    .setPrettyPrinting()
                     .create()
