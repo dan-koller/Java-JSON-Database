@@ -1,7 +1,8 @@
 # Java JSON Database
 
 A client-server based database that handles and stores data in a JSON format. The original idea was based on a project
-on a Jetbrains Academy track. I took this further and enhanced it mostly by styling the input and output format.
+on a Jetbrains Academy track. I took this further and enhanced it by styling the input and output format. I also added
+the ability to specify the local database path.
 
 ## Installation
 

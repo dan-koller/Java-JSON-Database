@@ -6,7 +6,6 @@ import com.google.gson.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.concurrent.locks.Lock;
@@ -14,21 +13,6 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Database {
-
-    private final static String FILE_NAME = "db.json";
-//    private static final Path DB_FILE_PATH = Paths.get(
-//            System.getProperty("user.dir") + File.separator +
-//                    "app" + File.separator +
-//                    "src" + File.separator +
-//                    "main" + File.separator +
-//                    "java" + File.separator +
-//                    "Java" + File.separator +
-//                    "JSON" + File.separator +
-//                    "Database" + File.separator +
-//                    "server" + File.separator +
-//                    "data" + File.separator +
-//                    FILE_NAME).toAbsolutePath();
-
     private static Path DB_FILE_PATH;
 
     private static final ReadWriteLock lock = new ReentrantReadWriteLock();
