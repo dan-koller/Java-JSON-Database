@@ -35,7 +35,9 @@ public class Session implements Runnable {
         this.request = RequestBuilder.buildFromCommandLine(input.readUTF());
         this.response = new Response();
 
-        if (request.getType().equalsIgnoreCase("exit")) Server.stopServer();
+        if (request.getType().equalsIgnoreCase("exit")) {
+            Server.stopServer();
+        }
     }
 
     // Process commands

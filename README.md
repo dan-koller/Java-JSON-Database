@@ -11,16 +11,24 @@ provided with this package:
 - `client.jar`
 - `server.jar`
 
-1. Start the server by double-clicking the `server.jar` file or running it from the
-   commandline: 
+1. Start the server by double-clicking* the `server.jar` file or running it from the commandline:
 
 ```shell
 java -jar /path/to/your/jar/server.jar
 ```
+
 2. Start the `client.jar` from the commandline and pass the requested arguments. For example:
+
 ```shell
 java -jar /path/to/your/jar/client.jar set -k "some key" -v "some value"
 ```
+
+_*) It is **highly** recommended starting the server from the commandline for the first time. You will be prompted to
+specify the path to your local database file. Please enter the absolute file path (e.g. `/path/to/your/db.json`) then
+restart your server._
+
+_If you want to specify a new path, just remove the path in the `app.config` located in the source directory of your app
+file._
 
 ### CLI arguments
 
