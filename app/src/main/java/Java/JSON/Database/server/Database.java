@@ -28,6 +28,7 @@ public class Database {
         // Initialize db file
         String dbContent = "";
         try {
+            assert DB_FILE_PATH != null; // Path will be set on initial launch
             if (Files.exists(DB_FILE_PATH)) {
                 dbContent = new String(Files.readAllBytes(DB_FILE_PATH));
             } else {
