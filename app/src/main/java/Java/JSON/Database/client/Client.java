@@ -19,7 +19,7 @@ public class Client {
         try (
                 Socket socket = new Socket(InetAddress.getByName(ADDRESS), PORT);
                 DataInputStream input = new DataInputStream(socket.getInputStream());
-                DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+                DataOutputStream output = new DataOutputStream(socket.getOutputStream())
         ) {
             System.out.println("Client started!");
 

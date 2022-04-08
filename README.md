@@ -6,13 +6,14 @@ the ability to specify the local database path.
 
 ## Installation
 
-Make sure to a [JVM](https://openjdk.java.net/install/) installed on your system. After that, download the files
-provided with this package:
+Make sure to a [JVM](https://openjdk.java.net/install/) installed on your system. After that, download the provided
+package containing:
 
 - `client.jar`
 - `server.jar`
+- _config files_
 
-1. Start the server by double-clicking* the `server.jar` file or running it from the commandline:
+1. Start the server by launching* the `launch-server.sh`** file or running it from the commandline:
 
 ```shell
 java -jar /path/to/your/jar/server.jar
@@ -24,12 +25,13 @@ java -jar /path/to/your/jar/server.jar
 java -jar /path/to/your/jar/client.jar set -k "some key" -v "some value"
 ```
 
-_*) It is **highly** recommended starting the server from the commandline for the first time. You will be prompted to
-specify the path to your local database file. Please enter the absolute file path (e.g. `/path/to/your/db.json`) then
-restart your server._
+_*) On the first server start you will be prompted to specify the path to your local database file. Please enter the
+absolute file path (e.g. `/path/to/your/db.json`) then restart your server._
 
 _If you want to specify a new path, just remove the path in the `app.config` located in the source directory of your app
 file._
+
+_**) Windows users may want to replace the file ending with *.bat._
 
 ### CLI arguments
 
