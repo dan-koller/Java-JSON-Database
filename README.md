@@ -33,6 +33,14 @@ file._
 
 _**) Windows users may want to replace the file ending with *.bat._
 
+### Launcher
+
+There are scripts available for launching the server and client from the commandline inside the lib directory. If you
+build the project yourself (Gradle recommended), you may want to update the path to your jar files inside these scripts
+accordingly.
+
+If you download the provided package you don't need to change any settings.
+
 ### CLI arguments
 
 | Option            | Description                            |
