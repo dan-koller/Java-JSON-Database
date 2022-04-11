@@ -28,8 +28,7 @@ java -jar /path/to/your/jar/client.jar set -k "some key" -v "some value"
 _*) On the first start the setup will guide you through the installation. When prompted, please enter IP-address, port
 number and absolute path (e.g. `/path/to/your/db.json`) to your database file._
 
-_If you want to specify a new path, just remove the path in the `app.config` located in the source directory of your app
-file._
+_If you want to specify a new path, just remove the path in the `app.config` located in the source directory of your app._
 
 _**) Windows users may want to replace the file ending with *.bat and update the script variables for batch._
 
