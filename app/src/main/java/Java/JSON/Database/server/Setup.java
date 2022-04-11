@@ -11,8 +11,8 @@ import java.util.Scanner;
  */
 public class Setup {
     private static final Scanner scanner = new Scanner(System.in);
-    private static Properties props = new Properties();
-    private static String fileName = System.getProperty("user.dir") + File.separator + "app.config";
+    private static final Properties PROPERTIES = new Properties();
+    private static final String FILE_NAME = System.getProperty("user.dir") + File.separator + "app.config";
 
     protected static String setUpServerAddress() {
         try {
@@ -88,9 +88,9 @@ public class Setup {
     private static String readProperty(String property) throws IOException {
         String value;
         // Try to read configuration file
-        try (FileInputStream fis = new FileInputStream(fileName)) {
-            props.load(fis);
-            value = props.getProperty(property);
+        try (FileInputStream fis = new FileInputStream(FILE_NAME)) {
+            PROPERTIES.load(fis);
+            value = PROPERTIES.getProperty(property);
         }
         return value;
     }
@@ -100,13 +100,13 @@ public class Setup {
          * IOExceptions get checked here because if there is no file,
          * a new config gets written.
          */
-        try (FileInputStream fis = new FileInputStream(fileName)) {
-            props.load(fis);
+        try (FileInputStream fis = new FileInputStream(FILE_NAME)) {
+            PROPERTIES.load(fis);
         } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + fileName + "\nCreating new file");
+            System.out.println("File not found: " + FILE_NAME + "\nCreating new file");
             try {
-                props.setProperty(property, "");
-                new FileOutputStream(fileName);
+                PROPERTIES.setProperty(property, "");
+                new FileOutputStream(FILE_NAME);
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
@@ -114,10 +114,10 @@ public class Setup {
             e.printStackTrace();
         } finally {
             // Create new config file
-            if (props.getProperty(property) == null || props.getProperty(property).isEmpty()) {
-                props.setProperty(property, value);
+            if (PROPERTIES.getProperty(property) == null || PROPERTIES.getProperty(property).isEmpty()) {
+                PROPERTIES.setProperty(property, value);
                 try {
-                    props.store(new FileOutputStream(fileName), null);
+                    PROPERTIES.store(new FileOutputStream(FILE_NAME), null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
