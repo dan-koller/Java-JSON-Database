@@ -7,7 +7,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Properties;
-import java.util.Scanner;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -42,7 +41,7 @@ public class Database {
         return dbContent.isBlank() ? new JsonObject() : new Gson().fromJson(dbContent, JsonObject.class);
     }
 
-    // Get app configuration
+    // Get database configuration
     private static void getConfig() {
         Properties props = new Properties();
         String fileName = System.getProperty("user.dir") + File.separator + "app.config";
@@ -51,34 +50,11 @@ public class Database {
         try (FileInputStream fis = new FileInputStream(fileName)) {
             props.load(fis);
         } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + fileName + "\nCreating new file");
-            try {
-                props.setProperty("app.path", "");
-                new FileOutputStream(fileName);
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
+            System.out.println("File not found: " + fileName);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // Create new config file
-            if (props.getProperty("app.path").isEmpty()) {
-                System.out.println("Database path is not set!");
-                System.out.print("Please enter the path to the database file: ");
-
-                Scanner scanner = new Scanner(System.in);
-                String path = scanner.next();
-
-                props.setProperty("app.path", path);
-                try {
-                    props.store(new FileOutputStream(fileName), null);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                // Set file path
-                DB_FILE_PATH = Path.of(props.getProperty("app.path")).toAbsolutePath();
-            }
+            DB_FILE_PATH = Path.of(props.getProperty("app.path")).toAbsolutePath();
         }
     }
 
