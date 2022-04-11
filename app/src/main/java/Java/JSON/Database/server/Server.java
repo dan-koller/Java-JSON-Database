@@ -8,13 +8,19 @@ import java.util.concurrent.Executors;
 
 public class Server {
 
-    private static final String ADDRESS = "127.0.0.1";
-    private static final int PORT = 23456;
+    private final String ADDRESS;
+    private final int PORT;
 
     final int threads = Runtime.getRuntime().availableProcessors();
     private final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(threads);
 
     private static boolean hasStopped = false;
+
+    public Server() {
+        this.ADDRESS = Setup.setUpServerAddress();
+        this.PORT = Setup.setUpServerPort();
+        Setup.setUpDatabase();
+    }
 
     public void start() {
         try (
