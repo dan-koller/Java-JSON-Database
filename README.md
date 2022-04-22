@@ -22,7 +22,7 @@ java -jar /path/to/your/jar/server.jar
 2. Start the `client.jar` from the commandline and pass the requested arguments. For example:
 
 ```shell
-java -jar /path/to/your/jar/client.jar set -k "some key" -v "some value"
+java -jar /path/to/your/jar/client.jar -t set -k "some key" -v "some value"
 ```
 
 _*) On the first start the setup will guide you through the installation. When prompted, please enter IP-address, port
