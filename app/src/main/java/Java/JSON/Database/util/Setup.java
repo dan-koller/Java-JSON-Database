@@ -1,4 +1,4 @@
-package Java.JSON.Database.server;
+package Java.JSON.Database.util;
 
 import java.io.*;
 import java.util.Properties;
@@ -14,7 +14,7 @@ public class Setup {
     private static final Properties PROPERTIES = new Properties();
     private static final String FILE_NAME = System.getProperty("user.dir") + File.separator + "app.config";
 
-    protected static String setUpServerAddress() {
+    public static String setUpServerAddress() {
         try {
             String property = readProperty("app.address");
             if (property.isBlank()) {
@@ -35,7 +35,7 @@ public class Setup {
         }
     }
 
-    protected static int setUpServerPort() {
+    public static int setUpServerPort() {
         try {
             String property = readProperty("app.port");
             if (property.isBlank()) {
@@ -69,7 +69,7 @@ public class Setup {
         }
     }
 
-    protected static void setUpDatabase() {
+    public static void setUpDatabase() {
         try {
             String property = readProperty("app.path");
             if (property.isBlank()) {
@@ -85,14 +85,20 @@ public class Setup {
         }
     }
 
-    private static String readProperty(String property) throws IOException {
+    public static String readProperty(String property) throws IOException {
         String value;
         // Try to read configuration file
         try (FileInputStream fis = new FileInputStream(FILE_NAME)) {
             PROPERTIES.load(fis);
             value = PROPERTIES.getProperty(property);
         }
-        return value;
+
+        // Check if property is set
+        if (value == null || value.equals("")) {
+            throw new IOException();
+        } else {
+            return value;
+        }
     }
 
     private static void writeProperty(String property, String value) {
